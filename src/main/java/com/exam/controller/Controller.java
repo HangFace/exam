@@ -12,6 +12,10 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
+//the back-end is running on 8080 server and front-end is running on 4200
+//so we cannot access back-end on front-end
+//to remove that conflict, I have used crossOrigin
 public class Controller {
 
     @Autowired
@@ -20,6 +24,7 @@ public class Controller {
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
 
+        user.setProfile("default.png");
         Role role = new Role();
         role.setRoleName("Normal");
 
